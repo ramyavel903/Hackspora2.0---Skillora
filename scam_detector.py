@@ -1,10 +1,11 @@
 def analyze_opportunity(description, email, payment):
-
     score = 0
     warnings = []
-
     text = description.lower()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5163a12 (Updated Project)
     payment_words = [
         "registration fee",
         "processing fee",
