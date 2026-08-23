@@ -33,8 +33,6 @@ ScamCheck analyzes the submitted information and provides:
 * JavaScript
 
 ## Project Structure
-
- , scam_detector.py , requirements.txt
 * app.py
 * scam_detector.py
 * requirements.txt
