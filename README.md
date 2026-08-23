@@ -1,11 +1,8 @@
 ## Team 
-Hackspora 2.0 — Skillora
+Hackspora 2.0 - Skillora
 
 ## Team Memebers
-Ramya V 
-Shaaleni P M
-Ibthihaj M 
-Devadharshni S 
+Ramya V  |  Shaaleni P M  |  Ibthihaj M  |  Devadharshni S 
 
 ## Problem Statement
 ScamCheck - Opportunity Verification is a hackathon project focused on helping users identify potential online scams.
