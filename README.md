@@ -31,6 +31,7 @@ ScamCheck analyzes the submitted information and provides:
 * HTML
 * CSS
 * JavaScript
+* sqlite3 (Fro database)
 
 ## Project Structure
 * app.py
