@@ -9,9 +9,6 @@ def analyze_opportunity(description, email, payment):
 
     text = description.lower()
 
-    # -----------------------------
-    # PAYMENT / FEE DETECTION
-    # -----------------------------
 
     payment_words = [
         "registration fee",
@@ -31,10 +28,6 @@ def analyze_opportunity(description, email, payment):
             "Payment or registration fee requested."
         )
 
-    # -----------------------------
-    # URGENCY DETECTION
-    # -----------------------------
-
     urgent_words = [
         "immediately",
         "urgent",
@@ -49,10 +42,6 @@ def analyze_opportunity(description, email, payment):
         warnings.append(
             "Urgent or pressure-based language detected."
         )
-
-    # -----------------------------
-    # SENSITIVE INFORMATION
-    # -----------------------------
 
     sensitive_words = [
         "aadhaar",
@@ -70,9 +59,6 @@ def analyze_opportunity(description, email, payment):
             "Sensitive personal or financial information requested."
         )
 
-    # -----------------------------
-    # EMAIL CHECK
-    # -----------------------------
 
     email_lower = email.lower()
 
@@ -84,10 +70,6 @@ def analyze_opportunity(description, email, payment):
         warnings.append(
             "Free email provider used instead of a company domain."
         )
-
-    # -----------------------------
-    # UNREALISTIC OFFER DETECTION
-    # -----------------------------
 
     unrealistic_words = [
         "₹1 lakh",
@@ -103,12 +85,7 @@ def analyze_opportunity(description, email, payment):
             "Potentially unrealistic salary or income claim."
         )
 
-    # Maximum score = 100
     score = min(score, 100)
-
-    # -----------------------------
-    # RISK LEVEL
-    # -----------------------------
 
     if score <= 30:
         risk_level = "LOW"
