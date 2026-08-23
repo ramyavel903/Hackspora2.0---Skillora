@@ -37,6 +37,7 @@ ScamCheck analyzes the submitted information and provides:
 * app.py
 * scam_detector.py
 * requirements.txt
+* database.py
 * templates/ - index.html  |  result.html
 * static/    - style.css   |  script.js
 
