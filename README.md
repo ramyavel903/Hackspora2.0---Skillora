@@ -38,6 +38,7 @@ ScamCheck analyzes the submitted information and provides:
 * scam_detector.py
 * requirements.txt
 * database.py
+* scamcheck.db (Store analysis results and related information permanently)
 * templates/ - index.html  |  result.html
 * static/    - style.css   |  script.js
 
