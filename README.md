@@ -1,7 +1,7 @@
 ## Team 
 Hackspora 2.0 - Skillora
 
-## Team Memebers
+## Team Members
 Ramya V  |  Shaaleni P M  |  Ibthihaj M  |  Devadharshni S 
 
 ## Problem Statement
