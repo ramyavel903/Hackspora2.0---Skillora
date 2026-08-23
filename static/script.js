@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .value
             .trim();
 
-        // Validate description
         if (description.length < 10) {
 
             alert("Please enter more details about the opportunity.");
@@ -24,16 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // STOP normal form submission temporarily
         event.preventDefault();
 
-        // Show Analysis page
         analysisScreen.classList.add("show");
 
-        // Wait for analysis animation
         setTimeout(function () {
 
-            // Now send the form data to Flask
             form.submit();
 
         }, 2000);
