@@ -34,17 +34,12 @@ ScamCheck analyzes the submitted information and provides:
 
 ## Project Structure
 
-app.py
-scam_detector.py
-requirements.txt
-
-templates/
-├── index.html
-└── result.html
-
-static/
-├── style.css
-└── script.js
+ , scam_detector.py , requirements.txt
+* app.py
+* scam_detector.py
+* requirements.txt
+* templates/ - index.html  |  result.html
+* static/    - style.css   |  script.js
 
 ## How It Works
 Enter Opportunity Details → Analyze → Get Risk Result
