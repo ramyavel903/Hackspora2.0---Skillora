@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ScamCheck - Result</title>
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* =========================
+           BODY
+        ========================= */
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #24154f 0%,
+                    #0d1424 42%,
+                    #070b14 100%
+                );
+
+            color: #f5f7ff;
+
+            padding: 40px 20px;
+        }
+
+        /* =========================
+           MAIN WRAPPER
+        ========================= */
+
+        .page {
+            width: 100%;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        /* =========================
+           TOP BRAND
+        ========================= */
+
+        .brand {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .brand h1 {
+            font-size: 34px;
+            font-weight: 800;
+            letter-spacing: -1px;
+
+            background: linear-gradient(
+                90deg,
+                #8b5cf6,
+                #22d3ee
+            );
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .brand p {
+            margin-top: 6px;
+            color: #8994aa;
+            font-size: 15px;
+        }
+
+        /* =========================
+           PROGRESS
+        ========================= */
+
+        .progress {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 25px auto 35px;
+
+            max-width: 700px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            color: #657188;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            white-space: nowrap;
+        }
+
+        .circle {
+            width: 32px;
+            height: 32px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid #334158;
+
+            color: #718099;
+        }
+
+        .step.completed .circle {
+            background: #6537e8;
+            border-color: #7c4dff;
+            color: white;
+        }
+
+        .step.completed {
+            color: #22d3ee;
+        }
+
+        .step.active .circle {
+            background: linear-gradient(
+                135deg,
+                #7c3aed,
+                #22d3ee
+            );
+
+            border: none;
+            color: white;
+        }
+
+        .step.active {
+            color: #ffffff;
+        }
+
+        .line {
+            height: 1px;
+            width: 100px;
+
+            background: #29364d;
+
+            margin: 0 14px;
+        }
+
+        /* =========================
+           MAIN CARD
+        ========================= */
+
+        .result-container {
+
+            background: rgba(15, 23, 38, 0.96);
+
+            border: 1px solid #26334a;
+
+            border-radius: 24px;
+
+            padding: 35px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.45);
+
+        }
+
+        /* =========================
+           RESULT HEADER
+        ========================= */
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .result-header .icon {
+            width: 60px;
+            height: 60px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background: linear-gradient(
+                135deg,
+                #392080,
+                #123c52
+            );
+
+            border: 1px solid #5435a3;
+
+            font-size: 28px;
+        }
+
+        .result-header h2 {
+            font-size: 27px;
+            color: #ffffff;
+        }
+
+        .result-header p {
+            color: #8792a8;
+            margin-top: 7px;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .card {
+            background: #111a2a;
+
+            border: 1px solid #29364d;
+
+            border-radius: 17px;
+
+            padding: 25px;
+
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #ffffff;
+
+            font-size: 20px;
+
+            margin-bottom: 20px;
+        }
+
+        /* =========================
+           OPPORTUNITY DETAILS
+        ========================= */
+
+        .info-grid {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+        }
+
+        .info-item {
+            background: #0c1422;
+
+            border: 1px solid #253249;
+
+            border-radius: 11px;
+
+            padding: 14px 16px;
+        }
+
+        .info-label {
+            display: block;
+
+            color: #738099;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.7px;
+
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            color: #f2f5ff;
+
+            font-size: 15px;
+
+            word-break: break-word;
+        }
+
+        /* =========================
+           RISK
+        ========================= */
+
+        .risk-card {
+            text-align: center;
+
+            padding: 30px;
+        }
+
+        .risk-icon {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .score {
+            font-size: 58px;
+
+            font-weight: 800;
+
+            margin: 8px 0;
+
+            color: #ffffff;
+        }
+
+        .score span {
+            font-size: 25px;
+            color: #6f7b91;
+        }
+
+        /* =========================
+           RISK LEVEL
+        ========================= */
+
+        .risk-level {
+            display: inline-block;
+
+            padding: 9px 25px;
+
+            border-radius: 50px;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+        .low {
+            background: rgba(34, 197, 94, 0.15);
+
+            border: 1px solid #22c55e;
+
+            color: #4ade80;
+        }
+
+        .medium {
+            background: rgba(245, 158, 11, 0.15);
+
+            border: 1px solid #f59e0b;
+
+            color: #fbbf24;
+        }
+
+        .high {
+            background: rgba(239, 68, 68, 0.15);
+
+            border: 1px solid #ef4444;
+
+            color: #f87171;
+        }
+
+        /* =========================
+           WARNING
+        ========================= */
+
+        .warning-card {
+            border-color: #553238;
+
+            background: #17141f;
+        }
+
+        .warning-card h3 {
+            color: #ffb454;
+        }
+
+        .warning-list {
+            list-style: none;
+        }
+
+        .warning-list li {
+            background: #211821;
+
+            border: 1px solid #4b3036;
+
+            border-radius: 10px;
+
+            padding: 14px 16px;
+
+            margin-bottom: 10px;
+
+            color: #f2b6b6;
+
+            line-height: 1.5;
+        }
+
+        .safe-message {
+            background: rgba(34, 197, 94, 0.08);
+
+            border: 1px solid rgba(34, 197, 94, 0.3);
+
+            color: #86efac;
+
+            padding: 16px;
+
+            border-radius: 11px;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           EXPLANATION
+        ========================= */
+
+        .explanation {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124, 58, 237, 0.10),
+                    rgba(34, 211, 238, 0.05)
+                );
+
+            border-color: #38335e;
+        }
+
+        .explanation h3 {
+            color: #c4b5fd;
+        }
+
+        .explanation p {
+            color: #9ba6ba;
+
+            line-height: 1.7;
+
+            margin-bottom: 10px;
+        }
+
+        .explanation strong {
+            color: #e5e7eb;
+        }
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back-button {
+            display: block;
+
+            width: 100%;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            background: linear-gradient(
+                135deg,
+                #6d3df0,
+                #2563eb
+            );
+
+            color: white;
+
+            font-weight: 700;
+
+            transition: 0.2s ease;
+
+            margin-top: 8px;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 20px 12px;
+            }
+
+            .result-container {
+                padding: 22px 16px;
+                border-radius: 18px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .progress {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 5px;
+            }
+
+            .line {
+                width: 50px;
+                flex-shrink: 0;
+            }
+
+            .brand h1 {
+                font-size: 28px;
+            }
+
+            .score {
+                font-size: 48px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- ================= BRAND ================= -->
+
+    <div class="brand">
+
+        <h1>SCAMCHECK</h1>
+
+        <p>Opportunity Verification System</p>
+
+    </div>
+
+
+    <!-- ================= PROGRESS ================= -->
+
+    <div class="progress">
+
+        <div class="step completed">
+
+            <div class="circle">✓</div>
+
+            <span>Details</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step completed">
+
+            <div class="circle">✓</div>
+
+            <span>Analysis</span>
+
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="step active">
+
+            <div class="circle">3</div>
+
+            <span>Result</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= RESULT CONTAINER ================= -->
+
+    <div class="result-container">
+
+
+        <!-- RESULT HEADER -->
+
+        <div class="result-header">
+
+            <div class="icon">🛡️</div>
+
+            <h2>Verification Complete</h2>
+
+            <p>
+                Here is the security analysis of the opportunity.
+            </p>
+
+        </div>
+
+
+        <!-- ================= OPPORTUNITY DETAILS ================= -->
+
+        <div class="card">
+
+            <h3>
+                📋
+                Opportunity Details
+            </h3>
+
+
+            <div class="info-grid">
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Company
+                    </span>
+
+                    <span class="info-value">
+                        {{ company }}
+                    </span>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Opportunity Type
+                    </span>
+
+                    <span class="info-value">
+                        {{ type }}
+                    </span>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Contact Email
+                    </span>
+
+                    <span class="info-value">
+                        {{ email }}
+                    </span>
+
+                </div>
+
+
+                {% if url %}
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Website
+                    </span>
+
+                    <span class="info-value">
+                        {{ url }}
+                    </span>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= RISK ASSESSMENT ================= -->
+
+        <div class="card risk-card">
+
+            <h3 style="justify-content:center;">
+                🛡️
+                Risk Assessment
+            </h3>
+
+
+            <div class="score">
+
+                {{ score }}
+
+                <span>/100</span>
+
+            </div>
+
+
+            <div class="risk-level
+                {% if risk_level == 'LOW' %}
+                    low
+                {% elif risk_level == 'MEDIUM' %}
+                    medium
+                {% else %}
+                    high
+                {% endif %}
+            ">
+
+                {{ risk_level }} RISK
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= WARNINGS ================= -->
+
+        <div class="card warning-card">
+
+            <h3>
+                ⚠️
+                Warning Indicators
+            </h3>
+
+
+            {% if warnings %}
+
+            <ul class="warning-list">
+
+                {% for warning in warnings %}
+
+                <li>
+                    {{ warning }}
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+            {% else %}
+
+            <div class="safe-message">
+
+                <strong>
+                    ✓ No major warning indicators detected.
+                </strong>
+
+                <br>
+
+                The submitted opportunity does not contain
+                the suspicious indicators currently checked
+                by ScamCheck.
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- ================= EXPLANATION ================= -->
+
+        <div class="card explanation">
+
+            {% if risk_level == "LOW" %}
+
+                <h3>
+                    🔎
+                    What does this mean?
+                </h3>
+
+                <p>
+                    This opportunity has a
+                    <strong>low risk score</strong>
+                    based on the suspicious indicators
+                    currently detected.
+                </p>
+
+                <p>
+                    However, always verify the company
+                    before sharing personal information
+                    or making payments.
+                </p>
+
+
+            {% elif risk_level == "MEDIUM" %}
+
+                <h3>
+                    🔎
+                    What does this mean?
+                </h3>
+
+                <p>
+                    This opportunity contains
+                    <strong>some suspicious indicators</strong>.
+                </p>
+
+                <p>
+                    Review the warning signs carefully
+                    and verify the company before proceeding.
+                </p>
+
+
+            {% else %}
+
+                <h3>
+                    🚨
+                    What does this mean?
+                </h3>
+
+                <p>
+                    This opportunity contains
+                    <strong>several suspicious indicators</strong>.
+                </p>
+
+                <p>
+                    We recommend verifying the company
+                    carefully before sharing personal
+                    information or making payments.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- ================= BACK ================= -->
+
+        <a href="/" class="back-button">
+            ← Check Another Opportunity
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

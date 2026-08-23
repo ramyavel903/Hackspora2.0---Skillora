@@ -1,11 +1,18 @@
 def analyze_opportunity(description, email, payment):
+
     score = 0
     warnings = []
-    text = description.lower()
-<<<<<<< HEAD
 
-=======
->>>>>>> 5163a12 (Updated Project)
+    description = description or ""
+    email = email or ""
+    payment = payment or "No"
+
+    text = description.lower()
+
+    # -----------------------------
+    # PAYMENT / FEE DETECTION
+    # -----------------------------
+
     payment_words = [
         "registration fee",
         "processing fee",
@@ -16,9 +23,17 @@ def analyze_opportunity(description, email, payment):
         "fee"
     ]
 
-    if payment.lower() == "yes" or any(word in text for word in payment_words):
+    if payment.lower() == "yes" or any(
+        word in text for word in payment_words
+    ):
         score += 25
-        warnings.append("Payment or registration fee requested.")
+        warnings.append(
+            "Payment or registration fee requested."
+        )
+
+    # -----------------------------
+    # URGENCY DETECTION
+    # -----------------------------
 
     urgent_words = [
         "immediately",
@@ -31,7 +46,13 @@ def analyze_opportunity(description, email, payment):
 
     if any(word in text for word in urgent_words):
         score += 10
-        warnings.append("Urgent or pressure-based language detected.")
+        warnings.append(
+            "Urgent or pressure-based language detected."
+        )
+
+    # -----------------------------
+    # SENSITIVE INFORMATION
+    # -----------------------------
 
     sensitive_words = [
         "aadhaar",
@@ -45,11 +66,28 @@ def analyze_opportunity(description, email, payment):
 
     if any(word in text for word in sensitive_words):
         score += 30
-        warnings.append("Sensitive personal or financial information requested.")
+        warnings.append(
+            "Sensitive personal or financial information requested."
+        )
 
-    if email.lower().endswith("@gmail.com") or email.lower().endswith("@yahoo.com"):
+    # -----------------------------
+    # EMAIL CHECK
+    # -----------------------------
+
+    email_lower = email.lower()
+
+    if (
+        email_lower.endswith("@gmail.com")
+        or email_lower.endswith("@yahoo.com")
+    ):
         score += 10
-        warnings.append("Free email provider used instead of a company domain.")
+        warnings.append(
+            "Free email provider used instead of a company domain."
+        )
+
+    # -----------------------------
+    # UNREALISTIC OFFER DETECTION
+    # -----------------------------
 
     unrealistic_words = [
         "₹1 lakh",
@@ -61,14 +99,23 @@ def analyze_opportunity(description, email, payment):
 
     if any(word in text for word in unrealistic_words):
         score += 15
-        warnings.append("Potentially unrealistic salary or income claim.")
+        warnings.append(
+            "Potentially unrealistic salary or income claim."
+        )
 
+    # Maximum score = 100
     score = min(score, 100)
+
+    # -----------------------------
+    # RISK LEVEL
+    # -----------------------------
 
     if score <= 30:
         risk_level = "LOW"
+
     elif score <= 60:
         risk_level = "MEDIUM"
+
     else:
         risk_level = "HIGH"
 

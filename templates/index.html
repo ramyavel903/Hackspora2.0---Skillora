@@ -1,56 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ScamCheck - Opportunity Verification</title>
+    <title>ScamCheck | Opportunity Verification</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
-    
-    <h1>ScamCheck</h1>
-    <h2>Opportunity Verification</h2>
-    <p>
-        Analyze internship and job opportunities for suspicious indicators.
-    </p>
-    <form action="/check" method="POST">
-        <label>Company Name:</label><br>
-        <input type="text" name="company" placeholder="Enter company name" required>
-        <br><br>
-        <label>Opportunity Type:</label><br>
-        <select name="type">
-            <option value="Internship">Internship</option>
-            <option value="Job">Job</option>
-            <option value="Freelance">Freelance</option>
-            <option value="Other">Other</option>
-        </select>
-        <br><br>
-        <label>Contact Email:</label><br>
-        <input type="email" name="email" placeholder="example@company.com">
-        <br><br>
-        <label>Website / URL:</label><br>
-        <input type="text" name="url" placeholder="https://example.com">
-        <br><br>
-        <label>Opportunity Details:</label><br>
-        <textarea
-            name="description"
-            rows="10"
-            cols="60"
-            placeholder="Paste the WhatsApp message, email, or job description here..."
-            required
-        ></textarea>
-        <br><br>
-        <label>Is payment required?</label><br>
-        <input type="radio" name="payment" value="Yes">
-        <label>Yes</label>
-        <input type="radio" name="payment" value="No" checked>
-        <label>No</label>
-        <br><br>
-        <button type="submit">
-            Check Opportunity
-        </button>
-    </form>
+
+    <!-- Background decoration -->
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <main class="page-wrapper">
+
+        <!-- =====================================
+             LEFT BRAND PANEL
+        ====================================== -->
+
+        <section class="brand-panel">
+
+            <div class="brand-logo">
+                <div class="shield">
+                    🛡
+                </div>
+
+                <span>SCAM<span>CHECK</span></span>
+            </div>
+
+            <div class="brand-content">
+
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    OPPORTUNITY SECURITY
+                </div>
+
+                <h1>
+                    Don't trust it.
+                    <br>
+                    <span>Verify it.</span>
+                </h1>
+
+                <p class="brand-description">
+                    Analyze internship, job and freelance opportunities
+                    before sharing your information or making payments.
+                </p>
+
+            </div>
+
+
+            <div class="security-checks">
+
+                <div class="security-item">
+                    <div class="check-icon">✓</div>
+                    <div>
+                        <strong>Payment Detection</strong>
+                        <small>Identify suspicious fee requests</small>
+                    </div>
+                </div>
+
+                <div class="security-item">
+                    <div class="check-icon">✓</div>
+                    <div>
+                        <strong>Message Analysis</strong>
+                        <small>Detect suspicious language patterns</small>
+                    </div>
+                </div>
+
+                <div class="security-item">
+                    <div class="check-icon">✓</div>
+                    <div>
+                        <strong>Data Protection</strong>
+                        <small>Detect requests for sensitive data</small>
+                    </div>
+                </div>
+
+                <div class="security-item">
+                    <div class="check-icon">✓</div>
+                    <div>
+                        <strong>Risk Assessment</strong>
+                        <small>Generate an understandable risk score</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="brand-footer">
+                <span>SCAMCHECK</span>
+                <span>•</span>
+                <span>STUDENT SAFETY</span>
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             RIGHT FORM PANEL
+        ====================================== -->
+
+        <section class="form-panel">
+
+            <div class="form-header">
+
+                <div class="form-icon">
+                    🔍
+                </div>
+
+                <div>
+                    <div class="mini-label">
+                        SECURITY SCAN
+                    </div>
+
+                    <h2>
+                        Verify an Opportunity
+                    </h2>
+
+                    <p>
+                        Enter the details below to analyze suspicious indicators.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- Progress indicator -->
+
+            <div class="scan-progress">
+
+                <div class="progress-step active">
+                    <span>1</span>
+                    Details
+                </div>
+
+                <div class="progress-line"></div>
+
+                <div class="progress-step">
+                    <span>2</span>
+                    Analysis
+                </div>
+
+                <div class="progress-line"></div>
+
+                <div class="progress-step">
+                    <span>3</span>
+                    Result
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 FORM
+            ====================================== -->
+<form id="scamForm" action="/check" method="POST">
+                <!-- Company -->
+
+                <div class="form-group">
+
+                    <label for="company">
+                        Company Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            🏢
+                        </span>
+
+                        <input
+                            id="company"
+                            type="text"
+                            name="company"
+                            placeholder="e.g. ABC Technologies"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Opportunity type -->
+
+                <div class="form-group">
+
+                    <label for="type">
+                        Opportunity Type
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            💼
+                        </span>
+
+                        <select
+                            id="type"
+                            name="type"
+                        >
+                            <option value="Internship">
+                                Internship
+                            </option>
+
+                            <option value="Job">
+                                Job
+                            </option>
+
+                            <option value="Freelance">
+                                Freelance
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Contact Email
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            ✉
+                        </span>
+
+                        <input
+                            id="email"
+                            type="email"
+                            name="email"
+                            placeholder="hr@company.com"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- URL -->
+
+                <div class="form-group">
+
+                    <label for="url">
+                        Website / URL
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            🔗
+                        </span>
+
+                        <input
+                            id="url"
+                            type="text"
+                            name="url"
+                            placeholder="https://company.com"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Description -->
+
+                <div class="form-group">
+
+                    <div class="label-row">
+
+                        <label for="description">
+                            Opportunity Details
+                        </label>
+
+                        <span class="optional-label">
+                            Required
+                        </span>
+
+                    </div>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        placeholder="Paste the WhatsApp message, email, job description or offer details here..."
+                        required
+                    ></textarea>
+
+                    <div class="textarea-hint">
+                        💡 Include the complete message for better analysis.
+                    </div>
+
+                </div>
+
+
+                <!-- Payment -->
+
+                <div class="form-group">
+
+                    <label>
+                        Is payment required?
+                    </label>
+
+                    <div class="payment-options">
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="Yes"
+                            >
+
+                            <span class="radio-custom"></span>
+
+                            <span>
+                                <strong>Yes</strong>
+                                <small>Payment requested</small>
+                            </span>
+
+                        </label>
+
+
+                        <label class="payment-option selected">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="No"
+                                checked
+                            >
+
+                            <span class="radio-custom"></span>
+
+                            <span>
+                                <strong>No</strong>
+                                <small>No payment mentioned</small>
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Submit -->
+
+<button
+    type="submit"
+    class="scan-button"
+>
+    <span class="button-icon">
+        🛡
+    </span>
+
+    <span>
+        Analyze Opportunity
+    </span>
+
+    <span class="button-arrow">
+        →
+    </span>
+</button>
+                
+<!-- Analysis Screen -->
+<div id="analysisScreen" class="analysis-screen">
+
+    <div class="analysis-container">
+
+        <div class="analysis-icon">
+            🔍
+        </div>
+
+        <div class="analysis-label">
+            SECURITY SCAN
+        </div>
+
+        <h1>Analyzing Opportunity</h1>
+
+        <p>
+            Checking the submitted opportunity for suspicious indicators.
+        </p>
+
+        <!-- Step Indicator -->
+        <div class="steps">
+
+            <div class="step completed">
+                <span>✓</span>
+                <label>Details</label>
+            </div>
+
+            <div class="step-line"></div>
+
+            <div class="step active">
+                <span>2</span>
+                <label>Analysis</label>
+            </div>
+
+            <div class="step-line"></div>
+
+            <div class="step">
+                <span>3</span>
+                <label>Result</label>
+            </div>
+
+        </div>
+
+        <div class="scan-box">
+
+            <div class="scan-circle">
+                🔎
+            </div>
+
+            <h2>Scanning...</h2>
+
+            <p>
+                Detecting payment requests, urgency,
+                suspicious emails and other warning indicators.
+            </p>
+
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+
+            <small>Please wait...</small>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
+
 </html>
