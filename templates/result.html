@@ -8,19 +8,12 @@
 
     <style>
 
-        /* =========================
-           RESET
-        ========================= */
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        /* =========================
-           BODY
-        ========================= */
 
         body {
             font-family: "Segoe UI", Arial, sans-serif;
@@ -40,19 +33,12 @@
             padding: 40px 20px;
         }
 
-        /* =========================
-           MAIN WRAPPER
-        ========================= */
 
         .page {
             width: 100%;
             max-width: 950px;
             margin: 0 auto;
         }
-
-        /* =========================
-           TOP BRAND
-        ========================= */
 
         .brand {
             text-align: center;
@@ -79,10 +65,6 @@
             color: #8994aa;
             font-size: 15px;
         }
-
-        /* =========================
-           PROGRESS
-        ========================= */
 
         .progress {
             display: flex;
@@ -156,10 +138,6 @@
             margin: 0 14px;
         }
 
-        /* =========================
-           MAIN CARD
-        ========================= */
-
         .result-container {
 
             background: rgba(15, 23, 38, 0.96);
@@ -174,10 +152,6 @@
                 0 25px 70px rgba(0, 0, 0, 0.45);
 
         }
-
-        /* =========================
-           RESULT HEADER
-        ========================= */
 
         .result-header {
             text-align: center;
@@ -217,10 +191,6 @@
             margin-top: 7px;
         }
 
-        /* =========================
-           CARDS
-        ========================= */
-
         .card {
             background: #111a2a;
 
@@ -244,10 +214,6 @@
 
             margin-bottom: 20px;
         }
-
-        /* =========================
-           OPPORTUNITY DETAILS
-        ========================= */
 
         .info-grid {
             display: grid;
@@ -289,10 +255,6 @@
             word-break: break-word;
         }
 
-        /* =========================
-           RISK
-        ========================= */
-
         .risk-card {
             text-align: center;
 
@@ -319,9 +281,6 @@
             color: #6f7b91;
         }
 
-        /* =========================
-           RISK LEVEL
-        ========================= */
 
         .risk-level {
             display: inline-block;
@@ -360,10 +319,6 @@
 
             color: #f87171;
         }
-
-        /* =========================
-           WARNING
-        ========================= */
 
         .warning-card {
             border-color: #553238;
@@ -409,10 +364,6 @@
             line-height: 1.6;
         }
 
-        /* =========================
-           EXPLANATION
-        ========================= */
-
         .explanation {
             background:
                 linear-gradient(
@@ -439,10 +390,6 @@
         .explanation strong {
             color: #e5e7eb;
         }
-
-        /* =========================
-           BACK BUTTON
-        ========================= */
 
         .back-button {
             display: block;
@@ -479,9 +426,6 @@
                 0 10px 25px rgba(99, 102, 241, 0.3);
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
 
         @media (max-width: 700px) {
 
@@ -525,8 +469,6 @@
 
 <div class="page">
 
-    <!-- ================= BRAND ================= -->
-
     <div class="brand">
 
         <h1>SCAMCHECK</h1>
@@ -535,8 +477,6 @@
 
     </div>
 
-
-    <!-- ================= PROGRESS ================= -->
 
     <div class="progress">
 
@@ -575,12 +515,9 @@
     </div>
 
 
-    <!-- ================= RESULT CONTAINER ================= -->
-
     <div class="result-container">
 
 
-        <!-- RESULT HEADER -->
 
         <div class="result-header">
 
@@ -594,8 +531,6 @@
 
         </div>
 
-
-        <!-- ================= OPPORTUNITY DETAILS ================= -->
 
         <div class="card">
 
@@ -667,8 +602,6 @@
         </div>
 
 
-        <!-- ================= RISK ASSESSMENT ================= -->
-
         <div class="card risk-card">
 
             <h3 style="justify-content:center;">
@@ -702,8 +635,6 @@
 
         </div>
 
-
-        <!-- ================= WARNINGS ================= -->
 
         <div class="card warning-card">
 
@@ -746,9 +677,6 @@
             {% endif %}
 
         </div>
-
-
-        <!-- ================= EXPLANATION ================= -->
 
         <div class="card explanation">
 
@@ -812,9 +740,6 @@
             {% endif %}
 
         </div>
-
-
-        <!-- ================= BACK ================= -->
 
         <a href="/" class="back-button">
             ← Check Another Opportunity
